@@ -44,9 +44,10 @@ class _ChartAppState extends State<ChartApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(),
-        body: 
-        SfCircularChart(
+        body: SfCircularChart(
+          backgroundColor: Colors.white,
           annotations: [
             CircularChartAnnotation(
                 widget: Text(
@@ -58,12 +59,12 @@ class _ChartAppState extends State<ChartApp> {
             DoughnutSeries(
                 onPointTap: (pointInteractionDetails) {
                   pointValue = pointInteractionDetails
-                          .dataPoints![pointInteractionDetails.pointIndex!].y
-                          .toString() +
-                      '%';
+                      .dataPoints![pointInteractionDetails.pointIndex!].y
+                      .toString();
                   setState(() {});
                 },
                 dataSource: chartData,
+                dataLabelSettings: const DataLabelSettings(isVisible: true),
                 xValueMapper: (SeriesData data, _) => data.x,
                 yValueMapper: (SeriesData data, _) => data.y)
           ],
